@@ -2,16 +2,14 @@
 
 #version 150 core
 
-in vec4 a_Pos;
+in vec2 a_Pos;
+in vec2 a_Uv;
 in vec3 a_Color;
-
-uniform mat4 u_Model;
-uniform mat4 u_View;
-uniform mat4 u_Proj;
-
 out vec4 v_Color;
+out vec2 v_Uv;
 
 void main() {
     v_Color = vec4(a_Color, 1.0);
-    gl_Position = u_Proj*u_View*u_Model*a_Pos;
+    v_Uv = a_Uv;
+    gl_Position = vec4(a_Pos, 0.0, 1.0);
 }
